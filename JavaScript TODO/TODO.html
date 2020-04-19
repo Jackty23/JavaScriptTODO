@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <audio id="myAudio">
+        <source src="SampleAudio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="myNotifyAudio">
+        <source src="Notify.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    ToDo Task:
+    <input type="text" id="myText" value="">
+    <select id="categories">
+        <option value="cat1">Category 1</option>
+        <option value="cat2">Category 2</option>
+        <option value="cat3">Category 3</option>
+        <option value="cat4">Category 4</option>
+    </select>
+    Timer:
+    <input type="text" id="Timer" value="">
+    <button id="Addbutton">Add</button>
+    <button id="Clearbutton">Clear</button>
+    <div id="CategoryOneDiv">
+        <h1>Category 1</h1>
+
+
+    </div>
+
+    <div id="CategoryTwoDiv">
+        <h1>Category 2</h1>
+
+
+    </div>
+
+    <div id="CategoryThreeDiv">
+        <h1>Category 3</h1>
+
+
+    </div>
+
+    <div id="CategoryFourDiv">
+        <h1>Category 4</h1>
+
+
+    </div>
+
+    <img id="imageSuccessImg" src="source.gif" name="canvas" />
+
+
+    <script type="text/javascript">
+
+
+        var myAudioFile = document.getElementById("myNotifyAudio");
+
+        let myCategoryDivOne = document.getElementById("CategoryOneDiv");
+        let myCategoryDivTwo = document.getElementById("CategoryTwoDiv");
+        let myCategoryDivThree = document.getElementById("CategoryThreeDiv");
+        let myCategoryDivFour = document.getElementById("CategoryFourDiv");
+        let myClearButton = document.getElementById("Clearbutton");
+        let myAddbutton = document.getElementById("Addbutton");
+        let myInputTextbox = document.getElementById("myText");
+        let myCategoryDropdown = document.getElementById("categories");
+
+        let myTimerTextbox = document.getElementById("Timer");
+
+        setImageVisible("imageSuccessImg", false)
+
+        myAddbutton.onclick = function () {
+
+            // force the user to enter a number 
+            if (myTimerTextbox.value == "") {
+                alert("Please enter a timer");
+                return;
+            }
+
+
+
+            // alert(myCategoryDropdown.options[myCategoryDropdown.selectedIndex].value);
+            // create a text box, an Add button and a line break.
+            let myNewElementText = document.createTextNode(myInputTextbox.value);
+            let myRemoveButton = document.createElement("Button");
+            myRemoveButton.innerHTML = "Delete";
+            let myLineBreakElement = document.createElement("BR");
+
+            let myCheckBox = document.createElement("input");
+            myCheckBox.setAttribute("type", "checkbox");
+
+
+
+            let selectedCategory = myCategoryDropdown.options[myCategoryDropdown.selectedIndex].value;
+
+            if (selectedCategory == "cat1") {
+
+                // append the items above to myElementDiv
+                myCategoryDivOne.appendChild(myNewElementText);
+                myCategoryDivOne.appendChild(myRemoveButton);
+                myCategoryDivOne.appendChild(myCheckBox);
+                myCategoryDivOne.appendChild(myLineBreakElement);
+
+                // When the user clicks the Delete button, 
+                // remove the Text box
+                // remove the Delete button
+                // remote the line break
+                myRemoveButton.onclick = function () {
+
+                    myCategoryDivOne.removeChild(myNewElementText);
+                    myCategoryDivOne.removeChild(myRemoveButton);
+                    myCategoryDivOne.removeChild(myLineBreakElement);
+                    myCategoryDivOne.removeChild(myCheckBox);
+
+
+                }
+                //When a user completes a task remove the entire tasks
+                myCheckBox.onclick = function () {
+
+                    //alert(myCheckBox.checked);
+                    if (myCheckBox.checked) {
+                        myCategoryDivOne.removeChild(myNewElementText);
+                        myCategoryDivOne.removeChild(myRemoveButton);
+                        myCategoryDivOne.removeChild(myLineBreakElement);
+                        myCategoryDivOne.removeChild(myCheckBox);
+
+                        myAudioFile.play();
+
+                        setImageVisible("imageSuccessImg", true)
+                    }
+                }
+            }
+            else if (selectedCategory == "cat2") {
+
+
+                // append the items above to myElementDiv
+                myCategoryDivTwo.appendChild(myNewElementText);
+                myCategoryDivTwo.appendChild(myRemoveButton);
+                myCategoryDivTwo.appendChild(myCheckBox);
+                myCategoryDivTwo.appendChild(myLineBreakElement);
+
+                // When the user clicks the Delete button, 
+                // remove the Text box
+                // remove the Delete button
+                // remote the line break
+                myRemoveButton.onclick = function () {
+
+                    myCategoryDivTwo.removeChild(myNewElementText);
+                    myCategoryDivTwo.removeChild(myRemoveButton);
+                    myCategoryDivTwo.removeChild(myLineBreakElement);
+                    myCategoryDivTwo.removeChild(myCheckBox);
+
+
+                }
+
+                //When a user completes a task remove the entire tasks
+                myCheckBox.onclick = function () {
+
+                    //alert(myCheckBox.checked);
+                    if (myCheckBox.checked) {
+                        myCategoryDivTwo.removeChild(myNewElementText);
+                        myCategoryDivTwo.removeChild(myRemoveButton);
+                        myCategoryDivTwo.removeChild(myLineBreakElement);
+                        myCategoryDivTwo.removeChild(myCheckBox);
+
+
+                        myAudioFile.play();
+                        setImageVisible("imageSuccessImg", true)
+                    }
+                }
+            }
+            else if (selectedCategory == "cat3") {
+                // append the items above to myElementDiv
+                myCategoryDivThree.appendChild(myNewElementText);
+                myCategoryDivThree.appendChild(myRemoveButton);
+                myCategoryDivThree.appendChild(myCheckBox);
+                myCategoryDivThree.appendChild(myLineBreakElement);
+
+                // When the user clicks the Delete button, 
+                // remove the Text box
+                // remove the Delete button
+                // remote the line break
+                myRemoveButton.onclick = function () {
+
+                    myCategoryDivThree.removeChild(myNewElementText);
+                    myCategoryDivThree.removeChild(myRemoveButton);
+                    myCategoryDivThree.removeChild(myLineBreakElement);
+                    myCategoryDivThree.removeChild(myCheckBox);
+
+                }
+
+                //When a user completes a task remove the entire tasks
+                myCheckBox.onclick = function () {
+
+                    //alert(myCheckBox.checked);
+                    if (myCheckBox.checked) {
+                        myCategoryDivThree.removeChild(myNewElementText);
+                        myCategoryDivThree.removeChild(myRemoveButton);
+                        myCategoryDivThree.removeChild(myLineBreakElement);
+                        myCategoryDivThree.removeChild(myCheckBox);
+
+                        myAudioFile.play();
+                        setImageVisible("imageSuccessImg", true)
+                    }
+                }
+
+            }
+            else if (selectedCategory == "cat4") {
+                // append the items above to myElementDiv
+                myCategoryDivFour.appendChild(myNewElementText);
+                myCategoryDivFour.appendChild(myRemoveButton);
+                myCategoryDivFour.appendChild(myCheckBox);
+                myCategoryDivFour.appendChild(myLineBreakElement);
+
+                // When the user clicks the Delete button, 
+                // remove the Text box
+                // remove the Delete button
+                // remote the line break
+                myRemoveButton.onclick = function () {
+
+                    myCategoryDivFour.removeChild(myNewElementText);
+                    myCategoryDivFour.removeChild(myRemoveButton);
+                    myCategoryDivFour.removeChild(myLineBreakElement);
+                    myCategoryDivFour.removeChild(myCheckBox);
+
+
+                }
+
+                //When a user completes a task remove the entire tasks
+                myCheckBox.onclick = function () {
+
+                    //alert(myCheckBox.checked);
+                    if (myCheckBox.checked) {
+                        myCategoryDivFour.removeChild(myNewElementText);
+                        myCategoryDivFour.removeChild(myRemoveButton);
+                        myCategoryDivFour.removeChild(myLineBreakElement);
+                        myCategoryDivFour.removeChild(myCheckBox);
+
+                        myAudioFile.play();
+                        setImageVisible("imageSuccessImg", true)
+                    }
+                }
+
+            }
+            function TaskTimeout() {
+                if (myCheckBox.checked == false) {
+                    var audioFile = document.getElementById("myAudio");
+                    audioFile.play();
+                    alert("The Task has timed out");
+
+
+                }
+
+
+            }
+            
+            setTimeout(TaskTimeout, myTimerTextbox.value);
+
+
+
+        }
+
+        // When the user clicks the Clear button, empty the Div element.
+        myClearButton.onclick = function () {
+            myCategoryDivOne.innerHTML = "";
+            myCategoryDivTwo.innerHTML = "";
+            myCategoryDivThree.innerHTML = "";
+            myCategoryDivFour.innerHTML = "";
+
+            let myCategoryHeadingOne = document.createElement("h1");
+            let myCategoryHeadingTwo = document.createElement("h1");
+            let myCategoryHeadingThree = document.createElement("h1");
+            let myCategoryHeadingFour = document.createElement("h1");
+
+            myCategoryHeadingOne.innerText = "Category 1";
+            myCategoryHeadingTwo.innerText = "Category 2";
+            myCategoryHeadingThree.innerText = "Category 3";
+            myCategoryHeadingFour.innerText = "Category 4";
+
+            myCategoryDivOne.appendChild(myCategoryHeadingOne);
+            myCategoryDivTwo.appendChild(myCategoryHeadingTwo);
+            myCategoryDivThree.appendChild(myCategoryHeadingThree);
+            myCategoryDivFour.appendChild(myCategoryHeadingFour);
+
+
+        }
+
+        function setImageVisible(id, visible) {
+            var img = document.getElementById(id);
+            img.style.visibility = (visible ? 'visible' : 'hidden');
+
+            if (visible) {
+                setTimeout(HideImage, 3000);
+            }
+        }
+
+        function HideImage() {
+
+            setImageVisible("imageSuccessImg", false);
+
+        }
+
+    </script>
+</body>
+
+</html>
